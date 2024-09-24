@@ -1,14 +1,15 @@
-import Link from 'next/link';
 import { MovieData } from '../types';
-import style from './movie-item.module.css';
 
-export default function MovieItem(data: MovieData) {
+const MovieItem = (data: MovieData) => {
   return (
-    <Link
-      className={style.container}
-      href={`/movie/${data.id}`}
-    >
-      <img src={data.posterImgUrl} />
-    </Link>
+    <div>
+      <img
+        src={data.posterImgUrl}
+        alt={data.title}
+        width={'100%'}
+      />
+    </div>
   );
-}
+};
+
+export default MovieItem;
