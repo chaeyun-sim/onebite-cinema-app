@@ -2,6 +2,7 @@
 
 import { useRouter, useSearchParams } from 'next/navigation';
 import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
+import style from './serachbar.module.css';
 
 export default function Searchbar() {
   const router = useRouter();
@@ -27,7 +28,10 @@ export default function Searchbar() {
   };
 
   return (
-    <form onSubmit={submitHandler}>
+    <form
+      onSubmit={submitHandler}
+      className={style.container}
+    >
       <input
         placeholder='검색어를 입력하세요...'
         value={keyword}

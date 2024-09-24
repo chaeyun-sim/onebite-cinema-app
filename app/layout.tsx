@@ -1,21 +1,19 @@
-import type { Metadata } from 'next';
 import './globals.css';
+import Link from 'next/link';
+import style from './layout.module.css';
+import { ReactNode } from 'react';
 
-export const metadata: Metadata = {
-  title: 'ONEBITE CINEMA',
-  description: 'one bite cinema',
-};
-
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang='en'>
       <body>
-        <div>Global Layout</div>
-        {children}
+        <div className={style.container}>
+          <header>
+            <Link href={'/'}>ONEBITE CINEMA</Link>
+          </header>
+          <main>{children}</main>
+          <footer className={style.footer}>제작 @chaeyun-sim</footer>
+        </div>
       </body>
     </html>
   );
