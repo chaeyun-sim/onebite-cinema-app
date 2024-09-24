@@ -1,4 +1,4 @@
-import { MovieData } from '../types';
+import { MovieData } from '@/types';
 
 const MovieItem = (data: MovieData) => {
   return (

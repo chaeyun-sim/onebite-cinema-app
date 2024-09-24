@@ -1,8 +1,8 @@
 import Head from 'next/head';
 import style from './page.module.css';
-import movies from '../_mock/dummy.json';
+import movies from '@/_mock/dummy.json';
 import Link from 'next/link';
-import { MovieData } from '../types';
+import { MovieData } from '@/types';
 
 const Page = () => {
   return (

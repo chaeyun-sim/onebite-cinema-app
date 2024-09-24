@@ -1,6 +1,6 @@
 import style from './page.module.css';
-import movies from '../../_mock/dummy.json';
-import MovieItem from '@/app/_components/movie-item';
+import movies from '@/_mock/dummy.json';
+import MovieItem from '@/_components/movie-item';
 import { Suspense } from 'react';
 
 export default function Page({

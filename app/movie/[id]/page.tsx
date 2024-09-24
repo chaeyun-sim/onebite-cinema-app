@@ -1,5 +1,5 @@
 import style from './page.module.css';
-import movies from '../../_mock/dummy.json';
+import movies from '@/_mock/dummy.json';
 
 export default function Page({ params }: { params: { id: string | string[] } }) {
   const movie = movies.find(el => el.id === Number(params.id));
