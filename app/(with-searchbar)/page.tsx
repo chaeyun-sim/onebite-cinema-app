@@ -1,9 +1,15 @@
-import Head from 'next/head';
 import style from './page.module.css';
 import { MovieData } from '@/types';
 import MovieItem from '@/_components/movie-item';
+import React, { Suspense } from 'react';
+import { delay } from '@/_utils/delay';
+import Loading from './search/loading';
+import MovieItemSkeleton from '@/_components/skeleton/movie-item-skeleton';
+
+export const dynamic = 'force-dynamic';
 
 async function AllMovies() {
+  await delay(1500);
   const response = await fetch(`${process.env.NEXT_PUBLIC_API_SERVER_URL}/movie`, {
     cache: 'force-cache',
   });
@@ -26,6 +32,7 @@ async function AllMovies() {
 }
 
 async function RecommendedMovies() {
+  await delay(3000);
   const response = await fetch(`${process.env.NEXT_PUBLIC_API_SERVER_URL}/movie/random`, {
     next: { revalidate: 3 },
   });
@@ -49,34 +56,34 @@ async function RecommendedMovies() {
 
 const Page = () => {
   return (
-    <>
-      <Head>
-        <title>한입시네마</title>
-        <meta
-          property='og:image'
-          content='/thumbnail.png'
-        />
-        <meta
-          property='og:title'
-          content='한입시네마'
-        />
-        <meta
-          property='og:description'
-          content='한입 시네마에 등록된 영화들을 만나보세요!'
-        />
-      </Head>
-      <div className={style.container}>
-        <section>
-          <h3>지금 가장 추천하는 영화</h3>
-
-          {RecommendedMovies()}
-        </section>
-        <section>
-          <h3>등록된 모든 영화</h3>
-          {AllMovies()}
-        </section>
-      </div>
-    </>
+    <div className={style.container}>
+      <section>
+        <h3>지금 가장 추천하는 영화</h3>
+        <Suspense
+          fallback={
+            <MovieItemSkeleton
+              numOfColumn={3}
+              totalCount={3}
+            />
+          }
+        >
+          <RecommendedMovies />
+        </Suspense>
+      </section>
+      <section>
+        <h3>등록된 모든 영화</h3>
+        <Suspense
+          fallback={
+            <MovieItemSkeleton
+              numOfColumn={5}
+              totalCount={10}
+            />
+          }
+        >
+          <AllMovies />
+        </Suspense>
+      </section>
+    </div>
   );
 };
 

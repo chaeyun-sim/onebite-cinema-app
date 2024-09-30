@@ -2,18 +2,12 @@ import style from './page.module.css';
 import MovieItem from '@/_components/movie-item';
 import { delay } from '@/_utils/delay';
 import { MovieData } from '@/types';
+import { Suspense } from 'react';
+import Loading from './loading';
 
-export default async function Page({
-  searchParams,
-}: {
-  searchParams: {
-    q: string;
-  };
-}) {
+async function SearchResult({ q }: { q: string }) {
   await delay(1500);
-  const response = await fetch(
-    `${process.env.NEXT_PUBLIC_API_SERVER_URL}/movie/search?q=${searchParams.q}`
-  );
+  const response = await fetch(`${process.env.NEXT_PUBLIC_API_SERVER_URL}/movie/search?q=${q}`);
 
   const movies: MovieData[] = await response.json();
 
@@ -30,5 +24,22 @@ export default async function Page({
         <p>검색 결과가 없습니다.</p>
       )}
     </div>
+  );
+}
+
+export default function Page({
+  searchParams,
+}: {
+  searchParams: {
+    q: string;
+  };
+}) {
+  return (
+    <Suspense
+      key={searchParams.q || ''}
+      fallback={<Loading />}
+    >
+      <SearchResult q={searchParams.q || ''} />
+    </Suspense>
   );
 }

@@ -35,8 +35,8 @@ export default function RootLayout({ children }: { children: ReactNode }) {
               <Image
                 src='/logo.png'
                 alt='logo'
-                width='200'
-                height='35'
+                width='250'
+                height='42'
               />
             </Link>
           </header>

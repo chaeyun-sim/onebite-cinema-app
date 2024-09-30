@@ -7,7 +7,7 @@ export default function Loading() {
       <Image
         src='/loading.gif'
         alt='loading'
-        width='40'
+        width={40}
         height='40'
       />
     </div>

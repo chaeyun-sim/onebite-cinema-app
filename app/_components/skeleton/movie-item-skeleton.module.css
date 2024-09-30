@@ -1,0 +1,33 @@
+.container {
+  display: grid;
+  gap: 8px;
+  width: 100%;
+}
+
+.skeleton_container {
+  width: 100%;
+  position: relative;
+  background-color: rgb(230, 230, 230);
+  padding-top: 150%;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.three_sections {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.five_sections {
+  grid-template-columns: repeat(5, 1fr);
+}
