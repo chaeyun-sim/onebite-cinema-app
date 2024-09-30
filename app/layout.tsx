@@ -3,6 +3,7 @@ import Link from 'next/link';
 import style from './layout.module.css';
 import { ReactNode } from 'react';
 import { MovieData } from './types';
+import Image from 'next/image';
 
 async function Footer() {
   const response = await fetch(`${process.env.NEXT_PUBLIC_API_SERVER_URL}/movie`, {
@@ -30,7 +31,14 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <body>
         <div className={style.container}>
           <header>
-            <Link href={'/'}>ONEBITE CINEMA</Link>
+            <Link href={'/'}>
+              <Image
+                src='/logo.png'
+                alt='logo'
+                width='200'
+                height='35'
+              />
+            </Link>
           </header>
           <main className={style.main}>{children}</main>
           <Footer />

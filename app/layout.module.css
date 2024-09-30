@@ -6,6 +6,8 @@
 
 .container > header {
   padding: 20px 0px;
+  display: flex;
+  justify-content: center;
 }
 
 .container > header > a {
