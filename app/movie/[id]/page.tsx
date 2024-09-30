@@ -2,6 +2,8 @@ import { MovieData } from '@/types';
 import style from './page.module.css';
 import { notFound } from 'next/navigation';
 
+export const dynamicParams = false;
+
 export async function generateStaticParams() {
   const movies: MovieData[] = await fetch(`${process.env.NEXT_PUBLIC_API_SERVER_URL}/movie`).then(
     res => res.json()
