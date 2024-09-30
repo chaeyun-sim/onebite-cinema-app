@@ -32,7 +32,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           <header>
             <Link href={'/'}>ONEBITE CINEMA</Link>
           </header>
-          <main>{children}</main>
+          <main className={style.main}>{children}</main>
           <Footer />
         </div>
       </body>

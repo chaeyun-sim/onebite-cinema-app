@@ -3,3 +3,10 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 10px;
 }
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100dvh - 400px);
+}
