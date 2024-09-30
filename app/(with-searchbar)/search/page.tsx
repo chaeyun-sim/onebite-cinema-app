@@ -11,7 +11,7 @@ export default async function Page({
 }) {
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_API_SERVER_URL}/movie/search?q=${searchParams.q}`,
-    { cache: 'no-store' }
+    { cache: 'force-cache' }
   );
 
   const movies: MovieData[] = await response.json();

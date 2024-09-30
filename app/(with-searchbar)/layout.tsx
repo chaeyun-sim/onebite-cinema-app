@@ -1,10 +1,12 @@
-import { PropsWithChildren } from 'react';
+import { PropsWithChildren, Suspense } from 'react';
 import Searchbar from '@/_components/searchbar';
 
 export default function Layout({ children }: PropsWithChildren) {
   return (
     <div>
-      <Searchbar />
+      <Suspense fallback={<div>Loading...</div>}>
+        <Searchbar />
+      </Suspense>
       {children}
     </div>
   );
