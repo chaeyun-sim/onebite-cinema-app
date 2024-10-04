@@ -2,18 +2,17 @@
   display: flex;
   justify-content: center;
   padding: 20px;
-
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-
   position: relative;
+  overflow: hidden;
 }
 
 .cover_img_container::before {
   position: absolute;
   top: 0px;
-  left: 0p;
+  left: 0px;
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.7);
@@ -24,6 +23,11 @@
   z-index: 1;
   max-height: 350px;
   height: 100%;
+  transition: transform 0.3s ease;
+}
+
+.cover_img_container:hover > img {
+  transform: scale(1.05); /* 추가 */
 }
 
 .cover_img_container img {
@@ -60,5 +64,5 @@
   font-size: 16px;
   border-radius: 5px;
   margin-top: 10px;
-  color: rgb(219, 219, 219);
+  color: rgb(100, 100, 100);
 }

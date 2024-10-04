@@ -18,14 +18,14 @@ export default function ReviewItem(props: ReviewData) {
       <div className={style.author_container}>
         <div className={style.author}>{author}</div>
         <div className={style.date}>{renderDate()}</div>
+        <div style={{ position: 'absolute', right: '20px' }}>
+          <ReviewItemDeleteButton
+            reviewId={id}
+            movieId={movieId}
+          />
+        </div>
       </div>
       <div className={style.content}>{content}</div>
-      <div className={style.delete_btn}>
-        <ReviewItemDeleteButton
-          reviewId={id}
-          movieId={movieId}
-        />
-      </div>
     </div>
   );
 }

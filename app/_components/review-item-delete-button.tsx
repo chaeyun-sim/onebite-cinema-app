@@ -46,7 +46,7 @@ export default function ReviewItemDeleteButton({
           onClick={() => ref.current?.requestSubmit()}
           style={{ cursor: 'pointer' }}
         >
-          🗑️ 리뷰 삭제하기
+          🗑️
         </div>
       )}
     </form>

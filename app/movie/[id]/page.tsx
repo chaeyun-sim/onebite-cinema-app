@@ -2,8 +2,6 @@
 import { MovieData } from '@/types';
 import style from './page.module.css';
 import ReviewEditor from '@/_components/review-editor';
-import { createReviewAction } from '@/_actions/create-review-action';
-import { revalidatePath } from 'next/cache';
 import MovieDetail from '@/_components/movie-detail';
 import ReviewList from '@/_components/review-list';
 
