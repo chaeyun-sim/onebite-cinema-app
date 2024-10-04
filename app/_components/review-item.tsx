@@ -1,8 +1,9 @@
 import { ReviewData } from '@/types';
 import style from './review-item.module.css';
+import ReviewItemDeleteButton from './review-item-delete-button';
 
 export default function ReviewItem(props: ReviewData) {
-  const { content, author, createdAt, id } = props;
+  const { content, author, createdAt, id, movieId } = props;
   const WEEK = ['일', '월', '화', '수', '목', '금', '토'];
 
   const renderDate = () => {
@@ -19,7 +20,12 @@ export default function ReviewItem(props: ReviewData) {
         <div className={style.date}>{renderDate()}</div>
       </div>
       <div className={style.content}>{content}</div>
-      <div className={style.delete_btn}>🗑️ 리뷰 삭제하기</div>
+      <div className={style.delete_btn}>
+        <ReviewItemDeleteButton
+          reviewId={id}
+          movieId={movieId}
+        />
+      </div>
     </div>
   );
 }

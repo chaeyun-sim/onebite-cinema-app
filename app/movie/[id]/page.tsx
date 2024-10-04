@@ -19,25 +19,11 @@ export async function generateStaticParams() {
   }));
 }
 
-async function handleCreateReview(formData: FormData) {
-  'use server';
-
-  const movieId = formData.get('movieId')?.toString();
-  await createReviewAction(formData);
-
-  if (movieId) {
-    revalidatePath(`/movie/${movieId}`, 'page');
-  }
-}
-
 export default async function Page({ params }: { params: { id: string | string[] } }) {
   return (
     <div className={style.container}>
       <MovieDetail id={params.id as string} />
-      <ReviewEditor
-        id={params.id as string}
-        handleCreateReview={handleCreateReview}
-      />
+      <ReviewEditor id={params.id as string} />
       <ReviewList id={params.id as string} />
     </div>
   );

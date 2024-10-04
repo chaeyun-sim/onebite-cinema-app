@@ -2,7 +2,9 @@ import { MovieData } from '@/types';
 import style from './movie-detail.module.css';
 
 async function fetchMovieDetail(id: string) {
-  const response = await fetch(`${process.env.NEXT_PUBLIC_API_SERVER_URL}/movie/${id}`);
+  const response = await fetch(`${process.env.NEXT_PUBLIC_API_SERVER_URL}/movie/${id}`, {
+    cache: 'force-cache',
+  });
   if (!response.ok) throw new Error(`Failed to fetch movie data`);
   return await response.json();
 }
