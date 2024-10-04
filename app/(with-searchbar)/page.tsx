@@ -3,7 +3,6 @@ import { MovieData } from '@/types';
 import MovieItem from '@/_components/movie-item';
 import React, { Suspense } from 'react';
 import { delay } from '@/_utils/delay';
-import Loading from './search/loading';
 import MovieItemSkeleton from '@/_components/skeleton/movie-item-skeleton';
 
 export const dynamic = 'force-dynamic';
@@ -17,14 +16,14 @@ async function AllMovies() {
     return <div>오류가 발생했습니다.</div>;
   }
 
-  const allBooks: MovieData[] = await response.json();
+  const allMovies: MovieData[] = await response.json();
 
   return (
     <div className={`${style.movie_container} ${style.five_sections}`}>
-      {allBooks.map(book => (
+      {allMovies.map(movie => (
         <MovieItem
-          key={book.id}
-          {...book}
+          key={movie.id}
+          {...movie}
         />
       ))}
     </div>
@@ -40,14 +39,14 @@ async function RecommendedMovies() {
     return <div>오류가 발생했습니다.</div>;
   }
 
-  const recoBooks: MovieData[] = await response.json();
+  const recoMovies: MovieData[] = await response.json();
 
   return (
     <div className={`${style.movie_container} ${style.three_sections}`}>
-      {recoBooks.map(book => (
+      {recoMovies.map(movie => (
         <MovieItem
-          key={book.id}
-          {...book}
+          key={movie.id}
+          {...movie}
         />
       ))}
     </div>
