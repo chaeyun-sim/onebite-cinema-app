@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
+  color: black;
 }
 
 .form_container textarea {
@@ -12,7 +13,7 @@
   box-sizing: border-box;
   background-color: transparent;
   border: 1px solid gray;
-  color: white;
+  outline: none;
 }
 
 .form_container input {
@@ -20,17 +21,18 @@
   box-sizing: border-box;
   background-color: transparent;
   border: 1px solid gray;
-  color: white;
+  outline: none;
 }
 
 .form_container button {
   width: 80px;
   padding: 10px;
-  background-color: white;
+  background-color: black;
   border: none;
   outline: none;
   cursor: pointer;
   font-weight: bold;
+  color: white;
 }
 
 .form_container .loading {

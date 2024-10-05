@@ -1,15 +1,21 @@
 import { MovieData } from '@/types';
 import Link from 'next/link';
+import styles from './movie-item.module.css';
 
 const MovieItem = (data: MovieData) => {
   return (
-    <Link href={`/movie/${data.id}`}>
-      <img
-        src={data.posterImgUrl}
-        alt={data.title}
-        width={'100%'}
-      />
-    </Link>
+    <div className={styles.movieItemContainer}>
+      <Link
+        href={`/movie/${data.id}`}
+        className={styles.movieLink}
+      >
+        <img
+          src={data.posterImgUrl}
+          alt={data.title}
+          className={styles.movieImage}
+        />
+      </Link>
+    </div>
   );
 };
 

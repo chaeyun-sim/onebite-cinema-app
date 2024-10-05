@@ -44,10 +44,15 @@ async function RecommendedMovies() {
   return (
     <div className={`${style.movie_container} ${style.three_sections}`}>
       {recoMovies.map(movie => (
-        <MovieItem
+        <div
           key={movie.id}
-          {...movie}
-        />
+          style={{ overflow: 'hidden' }}
+        >
+          <MovieItem
+            key={movie.id}
+            {...movie}
+          />
+        </div>
       ))}
     </div>
   );
