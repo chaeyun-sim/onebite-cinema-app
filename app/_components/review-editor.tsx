@@ -3,6 +3,7 @@
 import { createReviewAction } from '@/_actions/create-review-action';
 import style from './review-editor.module.css';
 import { useActionState, useEffect } from 'react';
+import Loading from '@/(with-searchbar)/search/loading';
 
 interface ReviewEditorProps {
   id: string;
@@ -45,10 +46,7 @@ export default function ReviewEditor({ id }: ReviewEditorProps) {
           />
           {isPending ? (
             <div className={style.loading}>
-              <img
-                src='/loading.gif'
-                style={{ width: 20, height: 20 }}
-              />
+              <Loading />
             </div>
           ) : (
             <button

@@ -36,8 +36,14 @@ export default function Searchbar() {
         placeholder='검색어를 입력하세요...'
         value={keyword}
         onChange={changeHandler}
+        aria-label='검색어 입력'
       />
-      <button type='submit'>검색</button>
+      <button
+        type='submit'
+        aria-label='검색 실행'
+      >
+        <span>검색</span>
+      </button>
     </form>
   );
 }

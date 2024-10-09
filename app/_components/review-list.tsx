@@ -1,20 +1,14 @@
-import { ReviewData } from '@/types';
 import ReviewItem from './review-item';
-
-async function fetchReviews(id: string) {
-  const response = await fetch(`${process.env.NEXT_PUBLIC_API_SERVER_URL}/review/movie/${id}`, {
-    next: { tags: [`review-${id}`] },
-  });
-  if (!response.ok) throw new Error(`Review fetch failed : ${response.statusText}`);
-  return await response.json();
-}
+import fetchReviews from '@/_lib/fetch-reviews';
 
 export default async function ReviewList({ id }: { id: string }) {
-  const reviews: ReviewData[] = await fetchReviews(id);
+  const response = await fetchReviews(id);
+
+  if (!response.status) return <div>오류가 발생했습니다.</div>;
 
   return (
     <section>
-      {reviews.map(review => (
+      {response.data.map(review => (
         <ReviewItem
           key={review.id}
           {...review}

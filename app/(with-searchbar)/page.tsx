@@ -4,26 +4,37 @@ import MovieItem from '@/_components/movie-item';
 import React, { Suspense } from 'react';
 import { delay } from '@/_utils/delay';
 import MovieItemSkeleton from '@/_components/skeleton/movie-item-skeleton';
+import { Metadata } from 'next';
+import { fetchAllMovies } from '@/_lib/fetch-all-movies';
 
 export const dynamic = 'force-dynamic';
 
+export const metadata: Metadata = {
+  title: '한입시네마',
+  description: '한입 시네마 | 다양한 영화와 리뷰를 만나보세요!',
+  openGraph: {
+    title: '한입시네마',
+    description: '한입 시네마 | 다양한 영화와 리뷰를 만나보세요!',
+    images: ['/thumbnail.png'],
+  },
+};
+
 async function AllMovies() {
   await delay(1500);
-  const response = await fetch(`${process.env.NEXT_PUBLIC_API_SERVER_URL}/movie`, {
-    cache: 'force-cache',
-  });
-  if (!response.ok) {
+  const response = await fetchAllMovies();
+
+  if (!response.status) {
     return <div>오류가 발생했습니다.</div>;
   }
 
-  const allMovies: MovieData[] = await response.json();
+  const allMovies: MovieData[] = response.data;
 
   return (
     <div className={`${style.movie_container} ${style.five_sections}`}>
       {allMovies.map(movie => (
         <MovieItem
           key={movie.id}
-          {...movie}
+          data={movie}
         />
       ))}
     </div>
@@ -50,7 +61,8 @@ async function RecommendedMovies() {
         >
           <MovieItem
             key={movie.id}
-            {...movie}
+            data={movie}
+            isRecommended
           />
         </div>
       ))}

@@ -1,5 +1,6 @@
 'use client';
 
+import Loading from '@/(with-searchbar)/search/loading';
 import { deleteReviewAction } from '@/_actions/delete-review-action';
 import { useActionState, useEffect, useRef } from 'react';
 
@@ -36,10 +37,7 @@ export default function ReviewItemDeleteButton({
       />
       {isPending ? (
         <div>
-          <img
-            src='/loading.gif'
-            style={{ width: 20, height: 20 }}
-          />
+          <Loading />
         </div>
       ) : (
         <div
