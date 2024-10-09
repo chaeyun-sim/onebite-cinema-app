@@ -2,7 +2,7 @@ import { ReviewData } from '@/types';
 import ReviewItem from './review-item';
 
 async function fetchReviews(id: string) {
-  const response = await fetch(`http://localhost:12345/review/movie/${id}`, {
+  const response = await fetch(`${process.env.NEXT_PUBLIC_API_SERVER_URL}/review/movie/${id}`, {
     next: { tags: [`review-${id}`] },
   });
   if (!response.ok) throw new Error(`Review fetch failed : ${response.statusText}`);
