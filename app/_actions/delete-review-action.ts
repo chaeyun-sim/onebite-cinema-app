@@ -1,6 +1,5 @@
 'use server';
 
-import { delay } from '@/_utils/delay';
 import { revalidateTag } from 'next/cache';
 
 export async function deleteReviewAction(_: any, formData: FormData) {
@@ -15,7 +14,6 @@ export async function deleteReviewAction(_: any, formData: FormData) {
   }
 
   try {
-    await delay(500);
     const response = await fetch(`${process.env.NEXT_PUBLIC_API_SERVER_URL}/review/${reviewId}`, {
       method: 'DELETE',
     });

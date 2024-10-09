@@ -1,6 +1,5 @@
 import style from './page.module.css';
 import MovieItem from '@/_components/movie-item';
-import { delay } from '@/_utils/delay';
 import { Suspense } from 'react';
 import Loading from './loading';
 import fetchSearchMovies from '@/_lib/fetch-search-movies';
@@ -18,7 +17,6 @@ export function generateMetadata({ searchParams }: { searchParams: { q?: string 
 }
 
 async function SearchResult({ q }: { q: string }) {
-  await delay(1500);
   const response = await fetchSearchMovies(q);
 
   return (

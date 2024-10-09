@@ -9,9 +9,7 @@ import { fetchSingleMovie } from '@/_lib/fetch-single-movie';
 export default async function Page({ params }: { params: { id: string | string[] } }) {
   const response = await fetchSingleMovie(params.id as string);
 
-  if (!response.status) {
-    return <div>Movie not found</div>;
-  }
+  if (!response.status) return <div>존재하지 않는 영화입니다.</div>;
 
   const movie = response.data as MovieData;
 
@@ -32,5 +30,3 @@ export async function generateStaticParams() {
     id: String(movie.id),
   }));
 }
-
-export const dynamicParams = false;

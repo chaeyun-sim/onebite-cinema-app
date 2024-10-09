@@ -2,12 +2,9 @@ import style from './page.module.css';
 import { MovieData } from '@/types';
 import MovieItem from '@/_components/movie-item';
 import React, { Suspense } from 'react';
-import { delay } from '@/_utils/delay';
 import MovieItemSkeleton from '@/_components/skeleton/movie-item-skeleton';
 import { Metadata } from 'next';
 import { fetchAllMovies } from '@/_lib/fetch-all-movies';
-
-export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   title: '한입시네마',
@@ -20,12 +17,9 @@ export const metadata: Metadata = {
 };
 
 async function AllMovies() {
-  await delay(1500);
   const response = await fetchAllMovies();
 
-  if (!response.status) {
-    return <div>오류가 발생했습니다.</div>;
-  }
+  if (!response.status) return <div>오류가 발생했습니다.</div>;
 
   const allMovies: MovieData[] = response.data;
 
@@ -42,13 +36,10 @@ async function AllMovies() {
 }
 
 async function RecommendedMovies() {
-  await delay(3000);
   const response = await fetch(`${process.env.NEXT_PUBLIC_API_SERVER_URL}/movie/random`, {
     next: { revalidate: 3 },
   });
-  if (!response.ok) {
-    return <div>오류가 발생했습니다.</div>;
-  }
+  if (!response.ok) return <div>오류가 발생했습니다.</div>;
 
   const recoMovies: MovieData[] = await response.json();
 

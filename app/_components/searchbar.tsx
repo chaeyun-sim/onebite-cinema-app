@@ -42,7 +42,7 @@ export default function Searchbar() {
         type='submit'
         aria-label='검색 실행'
       >
-        <span>검색</span>
+        검색
       </button>
     </form>
   );
