@@ -12,11 +12,11 @@ const MovieItem = ({ data, isRecommended }: { data: MovieData; isRecommended?: b
 
   const handleClick = () => {
     setIsLoading(true);
-    router.push(`/movie/${data.id}`);
 
     setTimeout(() => {
       setIsLoading(false);
     }, 1500);
+    router.push(`/movie/${data.id}`);
   };
 
   return (
